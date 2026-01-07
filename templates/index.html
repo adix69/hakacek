@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="wrapper">
+    
+    <div class="controls">
+        <form action="/" method="get">
+            <h3>Vyber ozdoby:</h3>
+            
+            <label>
+                <input type="checkbox" name="chain" value="on" {% if chain %}checked{% endif %}>
+                Řetěz
+            </label>
+            <br>
+
+            <label>
+                <input type="checkbox" name="balls" value="on" {% if balls %}checked{% endif %}>
+                Koule
+            </label>
+            <br>
+
+            <label>
+                <input type="checkbox" name="candles" value="on" {% if candles %}checked{% endif %}>
+                Svíčky
+            </label>
+            <br><br>
+
+            <button type="submit">Ozdobit stromeček</button>
+        </form>
+        
+        <br>
+        <a href="/">Sundat ozdoby</a>
+    </div>
+
+    <div class="tree-container">
+        <img src="{{ url_for('static', filename='images/tree.jpg') }}" alt="Strom" class="layer base-tree">
+
+        {% if chain %}
+            <img src="{{ url_for('static', filename='images/chain.png') }}" alt="Řetěz" class="layer decoration">
+        {% endif %}
+
+        {% if balls %}
+            <img src="{{ url_for('static', filename='images/balls.png') }}" alt="Koule" class="layer decoration">
+        {% endif %}
+
+        {% if candles %}
+            <img src="{{ url_for('static', filename='images/candles.png') }}" alt="Svíčky" class="layer decoration">
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
